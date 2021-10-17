@@ -33,3 +33,6 @@ Route::get('/register', function() {
 
 Route::get('/forum', [ForumTopicController::class, 'index'])
     ->name('forum');
+    
+Route::get('/forum/{topicId}', [ForumTopicController::class, 'getTopic'])
+    ->name('topic');

@@ -17,7 +17,7 @@
                             <div class="card mb-2">
                                 <div class="card-body">
                                     <h5 card="card-title">
-                                        <a href="#" class="card-link"><?= $topic['title'] ?></a>
+                                        <a href="<?= route('topic', $topic['id']) ?>" class="card-link"><?= $topic['title'] ?></a>
                                     </h5>
                                     <p class="card-text"><?= $topic['description'] ?></p>
                                     <p class="text-muted">By: <strong><?= $topic['creator']['firstName'] ?> <?= $topic['creator']['lastName'] ?></strong> - <?= $topic['created_at'] ?></p>

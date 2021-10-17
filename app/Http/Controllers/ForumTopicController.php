@@ -14,4 +14,12 @@ class ForumTopicController extends Controller
             'topics' => $topics,
         ]);
     }
+
+    public function getTopic(int $topicId)
+    {
+        $topic = ForumTopic::with('creator')->find($topicId);
+        return view('forum.topic', [
+            'topic' => $topic,
+        ]);
+    }
 }
