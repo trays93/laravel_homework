@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ForumTopicController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,6 @@ Route::get('/logout', [LoginController::class, 'logout'])
 Route::get('/register', function() {
     return view('index.register');
 })->name('register');
+
+Route::get('/forum', [ForumTopicController::class, 'index'])
+    ->name('forum');
