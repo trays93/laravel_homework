@@ -51,4 +51,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(ForumTopic::class);
     }
+
+    /**
+     * The user's comments in the forum.
+     */
+    public function topicComments()
+    {
+        return $this->hasMany(ForumComment::class);
+    }
 }

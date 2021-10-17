@@ -15,10 +15,18 @@ class ForumTopic extends Model
     ];
 
     /**
-     * Get the user that created the topic
+     * Get the user that created the topic.
      */
     public function creator()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get the topic's comments.
+     */
+    public function comments()
+    {
+        return $this->hasMany(ForumComment::class);
     }
 }
