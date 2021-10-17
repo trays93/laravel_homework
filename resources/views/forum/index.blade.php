@@ -26,6 +26,31 @@
                         </div>
                         @endforeach
                     </div>
+
+                    @auth
+                    <form action="<?= route('add-topic') ?>" method="POST" class="mt-3">
+                        @csrf
+                        <h5>Add new topic:</h5>
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title:</label>
+                            <input type="text" class="form-control" id="title" name="title">
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description:</label>
+                            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                        </div>
+                        @if ($errors->any())
+                        <div class="alert alert-danger" role="alert">
+                            <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                            </ul>
+                        </div>
+                        @endif
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    @endauth
                 </div>
             </div>
         </div>

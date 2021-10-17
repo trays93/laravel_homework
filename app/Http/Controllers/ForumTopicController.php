@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ForumTopic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ForumTopicController extends Controller
 {
@@ -21,6 +22,22 @@ class ForumTopicController extends Controller
         return view('forum.topic', [
             'topic' => $topic,
         ]);
+    }
+
+    public function addTopic(Request $request)
+    {
+        $request->validate([
+            'title' => ['required'],
+            'description' => ['required'],
+        ]);
+        
+        $t = new ForumTopic();
+        $t->title = $request->get('title');
+        $t->description = $request->get('description');
+        $t->creator()->associate(Auth::user());
+        $t->save();
+
+        return redirect()->route('forum');
     }
 
     public function addComment(int $topicId, Request $request)
