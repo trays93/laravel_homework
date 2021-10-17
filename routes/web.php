@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('index.index');
+})->name('index');
+
+Route::get('/login', function() {
+    return view('login.login', []);
+})->name('login');
+
+Route::post('/login', [LoginController::class, 'login']);
+
+Route::get('/register', function() {
+    return view('index.register');
+})->name('register');
