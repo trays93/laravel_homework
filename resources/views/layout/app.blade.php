@@ -10,7 +10,31 @@
     <style>
         main > .container {
             padding: 60px 15px 0;
-        }   
+        }
+
+        /* ============ desktop view ============ */
+        @media all and (min-width: 992px) {
+            .dropdown-menu li{ position: relative; 	}
+            .nav-item .submenu{ 
+                display: none;
+                position: absolute;
+                left:100%; top:-7px;
+            }
+            .nav-item .submenu-left{ 
+                right:100%; left:auto;
+            }
+            .dropdown-menu > li:hover{ background-color: #f1f1f1 }
+            .dropdown-menu > li:hover > .submenu{ display: block; }
+        }	
+        /* ============ desktop view .end// ============ */
+
+        /* ============ small devices ============ */
+        @media (max-width: 991px) {
+            .dropdown-menu .dropdown-menu{
+                margin-left:0.7rem; margin-right:0.7rem; margin-bottom: .5rem;
+            }
+        }	
+        /* ============ small devices .end// ============ */
     </style>
 </head>
 <body class="d-flex flex-column h-100">
@@ -30,8 +54,25 @@
                         <a class="nav-link" href="<?= route('forum') ?>">Forum</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Photos</a>
                     </li>
+                    @auth
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Admin
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                            <li><a class="dropdown-item" href="<?= route('user-list') ?>">Users</a></li>
+                            <li>
+                                <a class="dropdown-item" href="#">Messages >></a>
+                                <ul class="submenu dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Mailbox</a></li>
+                                    <li><a class="dropdown-item" href="#">Write a message</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    @endauth
                 </ul>
                 @auth
                 <div class="text-end">

@@ -11,6 +11,7 @@ class ForumTopicController extends Controller
     public function index(Request $request)
     {
         $topics = ForumTopic::with('creator')->get();
+
         return view('forum.index', [
             'topics' => $topics,
         ]);
@@ -18,7 +19,9 @@ class ForumTopicController extends Controller
 
     public function getTopic(int $topicId)
     {
-        $topic = ForumTopic::with(['creator', 'comments', 'comments.user'])->find($topicId);
+        $topic = ForumTopic::with(['creator', 'comments', 'comments.user'])
+            ->find($topicId);
+
         return view('forum.topic', [
             'topic' => $topic,
         ]);
@@ -42,7 +45,8 @@ class ForumTopicController extends Controller
 
     public function addComment(int $topicId, Request $request)
     {
-        $topic = ForumTopic::with(['creator', 'comments', 'comments.user'])->find($topicId);
+        $topic = ForumTopic::with(['creator', 'comments', 'comments.user'])
+            ->find($topicId);
         $comment = $request->get('comment');
 
         if ($comment === null) {

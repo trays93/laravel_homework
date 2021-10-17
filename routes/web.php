@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ForumTopicController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,7 +39,21 @@ Route::get('/forum/{topicId}', [ForumTopicController::class, 'getTopic'])
     ->name('topic');
 
 Route::post('/forum', [ForumTopicController::class, 'addTopic'])
-    ->name('add-topic')->middleware('auth');
+    ->name('add-topic')
+    ->middleware('auth');
 
 Route::post('/forum/{topicId}', [ForumTopicController::class, 'addComment'])
-    ->name('add-comment')->middleware('auth');
+    ->name('add-comment')
+    ->middleware('auth');
+
+Route::get('/users', [UserController::class, 'index'])
+    ->name('user-list')
+    ->middleware('auth');
+
+Route::get('/user/{userId}', [UserController::class, 'userDetails'])
+    ->name('user-detail')
+    ->middleware('auth');
+
+Route::post('/user/{userId}', [UserController::class, 'modifyUser'])
+    ->name('update-user')
+    ->middleware('auth');
