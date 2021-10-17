@@ -33,10 +33,18 @@
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                     </li>
                 </ul>
+                @auth
+                <div class="text-end">
+                    <a href="<?= route('logout') ?>" type="button" class="btn btn-warning">Logout</a>
+                </div> 
+                @endauth
+                @guest
                 <div class="text-end">
                     <a href="<?= route('login') ?>" type="button" class="btn btn-outline-light me-2">Login</a>
                     <a href="<?= route('register') ?>" type="button" class="btn btn-warning">Sign-up</a>
-                </div>
+                </div>    
+                @endguest
+                
             </div>
         </div>
     </nav>

@@ -23,6 +23,8 @@ Route::get('/login', function() {
 })->name('login');
 
 Route::post('/login', [LoginController::class, 'login']);
+Route::get('/logout', [LoginController::class, 'logout'])
+    ->name('logout');
 
 Route::get('/register', function() {
     return view('index.register');

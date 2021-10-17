@@ -3,20 +3,36 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        // TODO: ellenőrizni az adatokat
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required']
+        ]);
 
-        if ($request->get('email') === null
-            || $request->get('password') === null) {
+        if (!Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
             return view('login.login', [
                 'error' => 'Failed to login: incorrect username or password.'
             ]);
         } else {
             return redirect()->route('index');
         }
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()->route('index');
     }
 }
