@@ -43,4 +43,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the topics created by the user.
+     */
+    public function forumTopics()
+    {
+        return $this->hasMany(ForumTopic::class);
+    }
 }
