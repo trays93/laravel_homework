@@ -36,3 +36,6 @@ Route::get('/forum', [ForumTopicController::class, 'index'])
     
 Route::get('/forum/{topicId}', [ForumTopicController::class, 'getTopic'])
     ->name('topic');
+
+Route::post('/forum/{topicId}', [ForumTopicController::class, 'addComment'])
+    ->name('add-comment')->middleware('auth');

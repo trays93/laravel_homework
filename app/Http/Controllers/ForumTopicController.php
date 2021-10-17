@@ -17,7 +17,24 @@ class ForumTopicController extends Controller
 
     public function getTopic(int $topicId)
     {
-        $topic = ForumTopic::with('creator')->find($topicId);
+        $topic = ForumTopic::with(['creator', 'comments', 'comments.user'])->find($topicId);
+        return view('forum.topic', [
+            'topic' => $topic,
+        ]);
+    }
+
+    public function addComment(int $topicId, Request $request)
+    {
+        $topic = ForumTopic::with(['creator', 'comments', 'comments.user'])->find($topicId);
+        $comment = $request->get('comment');
+
+        if ($comment === null) {
+            return view('forum.topic', [
+                'topic' => $topic,
+                'error' => 'Comment cannot be empty!'
+            ]);
+        }
+
         return view('forum.topic', [
             'topic' => $topic,
         ]);
