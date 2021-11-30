@@ -28,23 +28,23 @@ Route::get('/forum/{topicId}', [ForumTopicController::class, 'getTopic'])
 
 Route::post('/forum', [ForumTopicController::class, 'addTopic'])
     ->name('add-topic')
-    ->middleware('auth');
+    ->middleware(['auth', 'isadmin']);
 
 Route::post('/forum/{topicId}', [ForumTopicController::class, 'addComment'])
     ->name('add-comment')
-    ->middleware('auth');
+    ->middleware(['auth', 'isadmin']);
 
 Route::get('/users', [UserController::class, 'index'])
     ->name('user-list')
-    ->middleware('auth');
+    ->middleware(['auth', 'isadmin']);
 
 Route::get('/user/{userId}', [UserController::class, 'userDetails'])
     ->name('user-detail')
-    ->middleware('auth');
+    ->middleware(['auth', 'isadmin']);
 
 Route::post('/user/{userId}', [UserController::class, 'modifyUser'])
     ->name('update-user')
-    ->middleware('auth');
+    ->middleware(['auth', 'isadmin']);
 
 Auth::routes();
 
