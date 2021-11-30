@@ -17,10 +17,10 @@
                             <div class="card mb-2">
                                 <div class="card-body">
                                     <h5 card="card-title">
-                                        <a href="<?= route('topic', $topic['id']) ?>" class="card-link"><?= $topic['title'] ?></a>
+                                        <a href="{{ route('topic', $topic['id']) }}" class="card-link">{{ $topic['title'] }}</a>
                                     </h5>
-                                    <p class="card-text"><?= $topic['description'] ?></p>
-                                    <p class="text-muted">By: <strong><?= $topic['creator']['firstName'] ?> <?= $topic['creator']['lastName'] ?></strong> - <?= $topic['created_at'] ?></p>
+                                    <p class="card-text">{{ $topic['description'] }}</p>
+                                    <p class="text-muted">By: <strong>{{ $topic['creator']['firstName'] }} {{ $topic['creator']['lastName'] }}</strong> - {{ $topic['created_at'] }}</p>
                                 </div>
                             </div>
                         </div>
@@ -28,7 +28,7 @@
                     </div>
 
                     @auth
-                    <form action="<?= route('add-topic') ?>" method="POST" class="mt-3">
+                    <form action="{{ route('add-topic') }}" method="POST" class="mt-3">
                         @csrf
                         <h5>Add new topic:</h5>
                         <div class="mb-3">

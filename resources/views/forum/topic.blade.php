@@ -7,8 +7,8 @@
         <div class="col-12 col-lg-12">
             <div class="card mt-5 mb-5">
                 <div class="card-header">
-                    <h3 class="card-title"><?= $topic['title'] ?></h3>
-                    <p class="lead">By: <strong><?= $topic['creator']['firstName'] ?> <?= $topic['creator']['lastName'] ?></p></strong>
+                    <h3 class="card-title">{{ $topic['title'] }}</h3>
+                    <p class="lead">By: <strong>{{ $topic['creator']['firstName'] }} {{ $topic['creator']['lastName'] }}</p></strong>
                 </div>
                 <div class="card-body">
 
@@ -19,11 +19,9 @@
                         <div class="col-12 col-lg-12">
                             <div class="card mt-1 mb-1">
                                 <div class="card-body">
-                                    <p class="card-text">
-                                        <?= $comment['comment'] ?>
-                                    </p>
+                                    <p class="card-text">{{ $comment['comment'] }}</p>
                                     <p class="card-text text-end fw-light">
-                                        By: <?= $comment['user']['firstName'] ?> <?= $comment['user']['lastName'] ?>, at: <?= $comment['created_at'] ?>
+                                        By: {{ $comment['user']['firstName'] }} {{ $comment['user']['lastName'] }}, at: {{ $comment['created_at']}}
                                     </p>
                                 </div>
                             </div>
@@ -32,7 +30,7 @@
                     </div>
 
                     @auth
-                    <form action="<?= route('add-comment', $topic['id']) ?>" method="POST">
+                    <form action="{{ route('add-comment', $topic['id']) }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="comment" class="form-label">Write your comment:</label>
@@ -40,7 +38,7 @@
                         </div>
                         @if (isset($error))
                         <div class="alert alert-danger" role="alert">
-                            <?= $error ?>
+                            {{ $error }}
                         </div>
                         @endif
                         <button type="submit" class="btn btn-primary">Submit</button>
