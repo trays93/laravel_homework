@@ -27,7 +27,7 @@
                     <form action="" method="POST">
                         @csrf
                         <div class="mb-3">
-                            <label for="email" class="form-label">Title:</label>
+                            <label for="email" class="form-label">Email:</label>
                             <input type="email" class="form-control" id="email" name="email" value="<?= $user['email'] ?>">
                         </div>
                         <div class="mb-3">

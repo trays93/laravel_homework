@@ -13,7 +13,7 @@
                         </div>
                         <div class="col-6">
                             <div class="text-end">
-                                <a href="" class="btn btn-primary">Create User</a>
+                                <a href="{{ route('new-user') }}" class="btn btn-primary">Create User</a>
                             </div>
                         </div>
                     </div>
@@ -39,8 +39,8 @@
                                 <td><?= $user['lastName'] ?></td>
                                 <td><?= $user['role'] ?></td>
                                 <td>
-                                    <a href="<?= route('user-detail', $user['id']) ?>" class="btn btn-warning btn-sm">Edit</a>
-                                    <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                    <a href="{{ route('user-detail', $user['id']) }}" class="btn btn-warning btn-sm">Edit</a>
+                                    <a href="{{ route('delete-user', $user['id']) }}" class="btn btn-danger btn-sm">Delete</a>
                                 </td>
                             </tr>
                             @endforeach

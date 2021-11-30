@@ -50,12 +50,24 @@ Route::get('/users', [UserController::class, 'index'])
     ->name('user-list')
     ->middleware(['auth', 'isadmin']);
 
+Route::get('/user/create', [UserController::class, 'newUser'])
+    ->name('new-user')
+    ->middleware(['auth', 'isadmin']);
+
+Route::post('/user/create', [UserController::class, 'createUser'])
+    ->name('create-user')
+    ->middleware(['auth', 'isadmin']);
+
 Route::get('/user/{userId}', [UserController::class, 'userDetails'])
     ->name('user-detail')
     ->middleware(['auth', 'isadmin']);
 
 Route::post('/user/{userId}', [UserController::class, 'modifyUser'])
     ->name('update-user')
+    ->middleware(['auth', 'isadmin']);
+
+Route::get('/user/{userId}/delete', [UserController::class, 'deleteUser'])
+    ->name('delete-user')
     ->middleware(['auth', 'isadmin']);
 
 Auth::routes();
