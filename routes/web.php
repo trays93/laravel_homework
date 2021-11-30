@@ -28,11 +28,23 @@ Route::get('/forum/{topicId}', [ForumTopicController::class, 'getTopic'])
 
 Route::post('/forum', [ForumTopicController::class, 'addTopic'])
     ->name('add-topic')
-    ->middleware(['auth', 'isadmin']);
+    ->middleware(['auth']);
 
 Route::post('/forum/{topicId}', [ForumTopicController::class, 'addComment'])
     ->name('add-comment')
-    ->middleware(['auth', 'isadmin']);
+    ->middleware(['auth']);
+
+Route::get('/forum/modify-comment/{commentId}', [ForumTopicController::class, 'modifyComment'])
+    ->name('modify-comment')
+    ->middleware(['auth']);
+
+Route::get('/forum/delete-comment/{commentId}', [ForumTopicController::class, 'deleteComment'])
+    ->name('delete-comment')
+    ->middleware(['auth']);
+
+Route::post('/forum/update-comment/{commentId}', [ForumTopicController::class, 'updateComment'])
+    ->name('update-comment')
+    ->middleware(['auth']);
 
 Route::get('/users', [UserController::class, 'index'])
     ->name('user-list')

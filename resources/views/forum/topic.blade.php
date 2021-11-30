@@ -11,6 +11,8 @@
                     <p class="lead">By: <strong>{{ $topic['creator']['firstName'] }} {{ $topic['creator']['lastName'] }}</p></strong>
                 </div>
                 <div class="card-body">
+                    <p class="lead">{{ $topic['description'] }}</p>
+                    <hr />
 
                     <p>Comments:</p>
 
@@ -21,8 +23,14 @@
                                 <div class="card-body">
                                     <p class="card-text">{{ $comment['comment'] }}</p>
                                     <p class="card-text text-end fw-light">
-                                        By: {{ $comment['user']['firstName'] }} {{ $comment['user']['lastName'] }}, at: {{ $comment['created_at']}}
+                                        By: {{ $comment['user']['firstName'] }} {{ $comment['user']['lastName'] }}, at: {{ $comment['updated_at'] == '' ? $comment['created_at'] : $comment['updated_at'] }}
                                     </p>
+                                    @auth
+                                    @if (Auth::user()->role == 'admin' || Auth::user()->id == $comment['user']['id'])
+                                    <a href="{{ route('modify-comment', $comment['id']) }}" class="btn btn-sm btn-primary">Modify</a>
+                                    <a href="{{ route('delete-comment', $comment['id']) }}" class="btn btn-sm btn-danger">Delete</a>
+                                    @endif
+                                    @endauth
                                 </div>
                             </div>
                         </div>
