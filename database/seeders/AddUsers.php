@@ -17,18 +17,18 @@ class AddUsers extends Seeder
     {
         DB::table('users')->insert([
             'firstName' => 'John',
-            'lastName' => 'Doe',
-            'email' => 'john.doe@gmail.com',
-            'password' => Hash::make('secret'),
-            'role' => 'admin'
+            'lastName'  => 'Doe',
+            'email'     => 'john.doe@gmail.com',
+            'password'  => Hash::make('secret'),
+            'role'      => 'admin'
         ]);
 
         DB::table('users')->insert([
             'firstName' => 'Jane',
-            'lastName' => 'Doe',
-            'email' => 'jane.doe@gmail.com',
-            'password' => Hash::make('secret'),
-            'role' => 'user'
+            'lastName'  => 'Doe',
+            'email'     => 'jane.doe@gmail.com',
+            'password'  => Hash::make('secret'),
+            'role'      => 'user'
         ]);
     }
 }
