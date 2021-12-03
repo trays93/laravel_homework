@@ -19,7 +19,7 @@
                         @csrf
                         <div class="mb-3">
                             <label for="to" class="form-label @error('to') is-invalid @enderror">To:</label>
-                            <select name="to" id="to" class="form-control">
+                            <select name="to" id="to" class="form-control" required>
                                 <option value="">Please select</option>
                                 @foreach ($users as $user)
                                     <option value="{{ $user['id'] }}" {{ old('to') == $user['id'] ? 'selected' : '' }}>{{ $user['firstName'] }} {{ $user['lastName'] }}</option>
@@ -33,7 +33,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="title" class="form-label @error('title') is-invalid @enderror">Title:</label>
-                            <input type="text" name="title" id="title" class="form-control" value="{{ old('title') }}">
+                            <input type="text" name="title" id="title" class="form-control" value="{{ old('title') }}" required>
                             @error('title')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -42,7 +42,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="body" class="form-label @error('body') is-invalid @enderror">Message:</label>
-                            <textarea class="form-control" id="body" name="body" rows="3">{{ old('body') }}</textarea>
+                            <textarea class="form-control" id="body" name="body" rows="3" required>{{ old('body') }}</textarea>
                             @error('body')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
