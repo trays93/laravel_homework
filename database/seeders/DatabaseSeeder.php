@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AddUsers::class);
         $this->call(ForumTopicSeeder::class);
         $this->call(ForumCommentSeeder::class);
+        $this->call(MessageSeeder::class);
     }
 }
