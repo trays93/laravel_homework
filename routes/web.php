@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ForumTopicController;
+use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +46,14 @@ Route::get('/forum/delete-comment/{commentId}', [ForumTopicController::class, 'd
 Route::post('/forum/update-comment/{commentId}', [ForumTopicController::class, 'updateComment'])
     ->name('update-comment')
     ->middleware(['auth']);
+
+Route::get('/messages', [MessagesController::class, 'index'])
+    ->name('messages')
+    ->middleware('auth');
+
+Route::get('/messages/write', [MessagesController::class, 'writeMessage'])
+    ->name('write-message')
+    ->middleware('auth');
 
 Route::get('/users', [UserController::class, 'index'])
     ->name('user-list')

@@ -74,8 +74,8 @@
                             <li>
                                 <a class="dropdown-item" href="#">Messages >></a>
                                 <ul class="submenu dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Mailbox</a></li>
-                                    <li><a class="dropdown-item" href="#">Write a message</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('messages') }}">Mailbox</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('write-message') }}">Write a message</a></li>
                                 </ul>
                             </li>
                         </ul>
