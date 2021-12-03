@@ -7,7 +7,7 @@
         <div class="col-12 col-lg-12">
             <div class="card mt-5 mb-5">
                 <div class="card-header">
-                    <h1>@yield('title')</h1>
+                    <h1 class="card-title">@yield('title')</h1>
                 </div>
                 <div class="card-body">
                     <table class="table table-striped">
@@ -16,6 +16,7 @@
                                 <th>Title</th>
                                 <th>Body</th>
                                 <th>From</th>
+                                <th>Date</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -24,6 +25,7 @@
                                     <td>{{ $message['title'] }}</td>
                                     <td>{{ $message['body'] }}</td>
                                     <td>{{ $message['sender']['firstName'] }} {{ $message['sender']['lastName'] }}</td>
+                                    <td>{{ $message['created_at'] }}</td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -55,6 +55,10 @@ Route::get('/messages/write', [MessagesController::class, 'writeMessage'])
     ->name('write-message')
     ->middleware('auth');
 
+Route::post('/messages/send', [MessagesController::class, 'sendMessage'])
+    ->name('send-message')
+    ->middleware('auth');
+
 Route::get('/users', [UserController::class, 'index'])
     ->name('user-list')
     ->middleware(['auth', 'isadmin']);
