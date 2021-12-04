@@ -32,7 +32,9 @@
             <div class="card mt-5 mb-5">
                 <div class="card-header d-flex justify-content-between">
                     <h3>@yield('title')</h3>
+                    @auth
                     <a href="{{ route('image-create') }}" class="btn btn-success">Upload</a>
+                    @endauth
                 </div>
                 <div class="card-body">
                     <div class="grid-container">

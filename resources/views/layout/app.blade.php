@@ -60,10 +60,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?= route('forum') ?>">Forum</a>
                     </li>
-                    @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('images') }}" tabindex="-1" aria-disabled="true">Photos</a>
+                        <a class="nav-link" href="{{ route('images') }}" tabindex="-1" aria-disabled="true">Gallery</a>
                     </li>
+                    @auth
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Admin

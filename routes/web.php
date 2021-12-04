@@ -62,8 +62,7 @@ Route::post('/messages/send', [MessagesController::class, 'sendMessage'])
     ->middleware('auth');
 
 Route::get('/gallery', [ImageController::class, 'index'])
-    ->name('images')
-    ->middleware('auth');
+    ->name('images');
 
 Route::get('/gallery/create', [ImageController::class, 'create'])
     ->name('image-create')
