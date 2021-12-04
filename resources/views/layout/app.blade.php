@@ -42,6 +42,7 @@
         }
         /* ============ small devices .end// ============ */
     </style>
+    @yield('styles')
 </head>
 <body class="d-flex flex-column h-100">
 
@@ -59,10 +60,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?= route('forum') ?>">Forum</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Photos</a>
-                    </li>
                     @auth
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('images') }}" tabindex="-1" aria-disabled="true">Photos</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Admin

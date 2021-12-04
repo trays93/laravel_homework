@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ForumTopicController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -59,6 +61,30 @@ Route::post('/messages/send', [MessagesController::class, 'sendMessage'])
     ->name('send-message')
     ->middleware('auth');
 
+Route::get('/gallery', [ImageController::class, 'index'])
+    ->name('images')
+    ->middleware('auth');
+
+Route::get('/gallery/create', [ImageController::class, 'create'])
+    ->name('image-create')
+    ->middleware('auth');
+
+Route::post('/gallery/upload', [ImageController::class, 'store'])
+    ->name('upload-image')
+    ->middleware('auth');
+
+Route::get('/gallery/edit/{id}', [ImageController::class, 'edit'])
+    ->name('show-image')
+    ->middleware('auth');
+    
+Route::post('/gallery/edit/{id}', [ImageController::class, 'update'])
+        ->name('update-image')
+        ->middleware('auth');
+
+Route::get('/gallery/delete/{id}', [ImageController::class, 'destroy'])
+    ->name('delete-image')
+    ->middleware('auth');
+
 Route::get('/users', [UserController::class, 'index'])
     ->name('user-list')
     ->middleware(['auth', 'isadmin']);
@@ -85,4 +111,4 @@ Route::get('/user/{userId}/delete', [UserController::class, 'deleteUser'])
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
