@@ -7,10 +7,10 @@
         <div class="col-12 col-lg-12">
             <div class="card mt-5 mb-5">
                 <div class="card-header">
-                    <h1>Home Page</h1>
+                    <h1>Welcome to my site!</h1>
                 </div>
                 <div class="card-body">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, saepe? Soluta aut minus dignissimos ex, ad vero, consequuntur harum ratione odio quaerat neque eius aperiam at, nihil et suscipit voluptatibus?</p>
+                    <p>This site is a homework project made for Rapid Application Development with Laravel course at John von Neumann University.</p>
                 </div>
             </div>
         </div>
